@@ -1,0 +1,284 @@
+{
+  "proyecto": {
+    "titulo": "CREATIVA360",
+    "descripcion": "Sistema completo de base de datos para agencia de marketing digital CREATIVA360",
+    "empresa": "Agencia de Marketing Digital CREATIVA360"
+  },
+  "metricas": {
+    "totalTablas": 14,
+    "totalRelaciones": 8,
+    "totalRegistros": 70,
+    "totalConsultas": 10
+  },
+  "tablas": [
+    {
+      "nombre": "CLIENTES",
+      "descripcion": "Información de clientes",
+      "campos": [
+        {"nombre": "cliente_id", "tipo": "NUMBER", "descripcion": "Identificador único del cliente"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre del cliente"},
+        {"nombre": "correo", "tipo": "VARCHAR2(100)", "descripcion": "Email del cliente"},
+        {"nombre": "telefono", "tipo": "VARCHAR2(20)", "descripcion": "Teléfono de contacto"},
+        {"nombre": "ciudad", "tipo": "VARCHAR2(50)", "descripcion": "Ciudad del cliente"}
+      ],
+      "foreignKeys": []
+    },
+    {
+      "nombre": "CAMPANAS",
+      "descripcion": "Campañas publicitarias",
+      "campos": [
+        {"nombre": "campana_id", "tipo": "NUMBER", "descripcion": "Identificador único de campaña"},
+        {"nombre": "cliente_id", "tipo": "NUMBER", "descripcion": "Cliente asociado"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre de la campaña"},
+        {"nombre": "fecha_inicio", "tipo": "DATE", "descripcion": "Fecha de inicio"},
+        {"nombre": "fecha_fin", "tipo": "DATE", "descripcion": "Fecha de finalización"}
+      ],
+      "foreignKeys": [
+        {"campo": "cliente_id", "referencia": "CLIENTES(cliente_id)"}
+      ]
+    },
+    {
+      "nombre": "EMPLEADOS",
+      "descripcion": "Personal de la agencia",
+      "campos": [
+        {"nombre": "empleado_id", "tipo": "NUMBER", "descripcion": "Identificador único del empleado"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre del empleado"},
+        {"nombre": "rol", "tipo": "VARCHAR2(50)", "descripcion": "Rol o cargo"},
+        {"nombre": "correo", "tipo": "VARCHAR2(100)", "descripcion": "Email corporativo"}
+      ],
+      "foreignKeys": []
+    },
+    {
+      "nombre": "SERVICIOS",
+      "descripcion": "Servicios ofrecidos",
+      "campos": [
+        {"nombre": "servicio_id", "tipo": "NUMBER", "descripcion": "Identificador único del servicio"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre del servicio"},
+        {"nombre": "descripcion", "tipo": "VARCHAR2(200)", "descripcion": "Descripción detallada"},
+        {"nombre": "precio", "tipo": "NUMBER(10,2)", "descripcion": "Precio del servicio"}
+      ],
+      "foreignKeys": []
+    },
+    {
+      "nombre": "FACTURAS",
+      "descripcion": "Facturación",
+      "campos": [
+        {"nombre": "factura_id", "tipo": "NUMBER", "descripcion": "Identificador único de factura"},
+        {"nombre": "cliente_id", "tipo": "NUMBER", "descripcion": "Cliente facturado"},
+        {"nombre": "fecha", "tipo": "DATE", "descripcion": "Fecha de facturación"},
+        {"nombre": "total", "tipo": "NUMBER(10,2)", "descripcion": "Total facturado"}
+      ],
+      "foreignKeys": [
+        {"campo": "cliente_id", "referencia": "CLIENTES(cliente_id)"}
+      ]
+    },
+    {
+      "nombre": "DETALLE_FACTURA",
+      "descripcion": "Detalles de facturación",
+      "campos": [
+        {"nombre": "detalle_id", "tipo": "NUMBER", "descripcion": "Identificador único del detalle"},
+        {"nombre": "factura_id", "tipo": "NUMBER", "descripcion": "Factura asociada"},
+        {"nombre": "servicio_id", "tipo": "NUMBER", "descripcion": "Servicio facturado"},
+        {"nombre": "cantidad", "tipo": "NUMBER", "descripcion": "Cantidad del servicio"},
+        {"nombre": "subtotal", "tipo": "NUMBER(10,2)", "descripcion": "Subtotal del detalle"}
+      ],
+      "foreignKeys": [
+        {"campo": "factura_id", "referencia": "FACTURAS(factura_id)"},
+        {"campo": "servicio_id", "referencia": "SERVICIOS(servicio_id)"}
+      ]
+    },
+    {
+      "nombre": "PAGOS",
+      "descripcion": "Registro de pagos",
+      "campos": [
+        {"nombre": "pago_id", "tipo": "NUMBER", "descripcion": "Identificador único del pago"},
+        {"nombre": "factura_id", "tipo": "NUMBER", "descripcion": "Factura pagada"},
+        {"nombre": "fecha_pago", "tipo": "DATE", "descripcion": "Fecha del pago"},
+        {"nombre": "monto", "tipo": "NUMBER(10,2)", "descripcion": "Monto pagado"}
+      ],
+      "foreignKeys": [
+        {"campo": "factura_id", "referencia": "FACTURAS(factura_id)"}
+      ]
+    },
+    {
+      "nombre": "CONTRATOS",
+      "descripcion": "Contratos con clientes",
+      "campos": [
+        {"nombre": "contrato_id", "tipo": "NUMBER", "descripcion": "Identificador único del contrato"},
+        {"nombre": "cliente_id", "tipo": "NUMBER", "descripcion": "Cliente contratante"},
+        {"nombre": "fecha_inicio", "tipo": "DATE", "descripcion": "Fecha de inicio del contrato"},
+        {"nombre": "fecha_fin", "tipo": "DATE", "descripcion": "Fecha de finalización"},
+        {"nombre": "estado", "tipo": "VARCHAR2(50)", "descripcion": "Estado del contrato"}
+      ],
+      "foreignKeys": [
+        {"campo": "cliente_id", "referencia": "CLIENTES(cliente_id)"}
+      ]
+    },
+    {
+      "nombre": "REDES_SOCIALES",
+      "descripcion": "Plataformas digitales",
+      "campos": [
+        {"nombre": "red_id", "tipo": "NUMBER", "descripcion": "Identificador único de red social"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(50)", "descripcion": "Nombre de la plataforma"},
+        {"nombre": "plataforma", "tipo": "VARCHAR2(50)", "descripcion": "Tipo de plataforma"},
+        {"nombre": "descripcion", "tipo": "VARCHAR2(200)", "descripcion": "Descripción de la red"}
+      ],
+      "foreignKeys": []
+    },
+    {
+      "nombre": "PUBLICACIONES",
+      "descripcion": "Posts y contenido",
+      "campos": [
+        {"nombre": "publicacion_id", "tipo": "NUMBER", "descripcion": "Identificador único de publicación"},
+        {"nombre": "campana_id", "tipo": "NUMBER", "descripcion": "Campaña asociada"},
+        {"nombre": "red_id", "tipo": "NUMBER", "descripcion": "Red social utilizada"},
+        {"nombre": "titulo", "tipo": "VARCHAR2(100)", "descripcion": "Título de la publicación"},
+        {"nombre": "contenido", "tipo": "VARCHAR2(500)", "descripcion": "Contenido del post"},
+        {"nombre": "fecha_publicacion", "tipo": "DATE", "descripcion": "Fecha de publicación"}
+      ],
+      "foreignKeys": [
+        {"campo": "campana_id", "referencia": "CAMPANAS(campana_id)"},
+        {"campo": "red_id", "referencia": "REDES_SOCIALES(red_id)"}
+      ]
+    },
+    {
+      "nombre": "METRICAS_CAMPANA",
+      "descripcion": "Métricas de rendimiento",
+      "campos": [
+        {"nombre": "metrica_id", "tipo": "NUMBER", "descripcion": "Identificador único de métrica"},
+        {"nombre": "campana_id", "tipo": "NUMBER", "descripcion": "Campaña medida"},
+        {"nombre": "alcance", "tipo": "NUMBER", "descripcion": "Personas alcanzadas"},
+        {"nombre": "impresiones", "tipo": "NUMBER", "descripcion": "Impresiones obtenidas"},
+        {"nombre": "clicks", "tipo": "NUMBER", "descripcion": "Clicks recibidos"},
+        {"nombre": "conversiones", "tipo": "NUMBER", "descripcion": "Conversiones logradas"},
+        {"nombre": "fecha_medicion", "tipo": "DATE", "descripcion": "Fecha de medición"}
+      ],
+      "foreignKeys": [
+        {"campo": "campana_id", "referencia": "CAMPANAS(campana_id)"}
+      ]
+    },
+    {
+      "nombre": "LEADS",
+      "descripcion": "Prospectos generados",
+      "campos": [
+        {"nombre": "lead_id", "tipo": "NUMBER", "descripcion": "Identificador único del lead"},
+        {"nombre": "campana_id", "tipo": "NUMBER", "descripcion": "Campaña que generó el lead"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre del prospecto"},
+        {"nombre": "correo", "tipo": "VARCHAR2(100)", "descripcion": "Email del prospecto"},
+        {"nombre": "estado", "tipo": "VARCHAR2(50)", "descripcion": "Estado del lead"}
+      ],
+      "foreignKeys": [
+        {"campo": "campana_id", "referencia": "CAMPANAS(campana_id)"}
+      ]
+    },
+    {
+      "nombre": "HERRAMIENTAS_DIGITALES",
+      "descripcion": "Software utilizado",
+      "campos": [
+        {"nombre": "herramienta_id", "tipo": "NUMBER", "descripcion": "Identificador único de herramienta"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre de la herramienta"},
+        {"nombre": "categoria", "tipo": "VARCHAR2(50)", "descripcion": "Categoría de la herramienta"},
+        {"nombre": "costo_mensual", "tipo": "NUMBER(10,2)", "descripcion": "Costo mensual"},
+        {"nombre": "descripcion", "tipo": "VARCHAR2(200)", "descripcion": "Descripción de la herramienta"}
+      ],
+      "foreignKeys": []
+    },
+    {
+      "nombre": "PROVEEDORES",
+      "descripcion": "Proveedores externos",
+      "campos": [
+        {"nombre": "proveedor_id", "tipo": "NUMBER", "descripcion": "Identificador único del proveedor"},
+        {"nombre": "nombre", "tipo": "VARCHAR2(100)", "descripcion": "Nombre del proveedor"},
+        {"nombre": "servicio", "tipo": "VARCHAR2(100)", "descripcion": "Servicio que ofrece"},
+        {"nombre": "contacto", "tipo": "VARCHAR2(100)", "descripcion": "Información de contacto"}
+      ],
+      "foreignKeys": []
+    }
+  ],
+  "datosEjemplo": {
+    "totalRegistros": 70,
+    "descripcion": "70 registros de ejemplo distribuidos en las 14 tablas del sistema"
+  },
+  "consultas": [
+    {
+      "titulo": "Listado completo de clientes",
+      "descripcion": "Obtiene todos los clientes registrados en el sistema",
+      "sql": "SELECT * FROM CLIENTES;",
+      "resultadoEsperado": "5 clientes: Panadería El Trigo, Gimnasio FitLife, Veterinaria Huellas, Café Aroma, Consultora Andes"
+    },
+    {
+      "titulo": "Campañas activas en 2025",
+      "descripcion": "Lista las campañas que iniciaron en el año 2025",
+      "sql": "SELECT nombre, fecha_inicio FROM CAMPANAS WHERE EXTRACT(YEAR FROM fecha_inicio) = 2025;",
+      "resultadoEsperado": "5 campañas activas con fechas entre enero y mayo de 2025"
+    },
+    {
+      "titulo": "Personal con rol específico",
+      "descripcion": "Encuentra empleados con rol de Community Manager",
+      "sql": "SELECT nombre FROM EMPLEADOS WHERE rol = 'Community Manager';",
+      "resultadoEsperado": "María González (Community Manager)"
+    },
+    {
+      "titulo": "Facturas de alto valor",
+      "descripcion": "Facturas con monto superior a $1000",
+      "sql": "SELECT factura_id, total FROM FACTURAS WHERE total > 1000;",
+      "resultadoEsperado": "5 facturas con montos entre $1,300 y $2,100"
+    },
+    {
+      "titulo": "Leads en estado pendiente",
+      "descripcion": "Prospectos que requieren seguimiento",
+      "sql": "SELECT * FROM LEADS WHERE estado = 'Pendiente';",
+      "resultadoEsperado": "2 leads pendientes: Roberto Silva y Sofia Vega"
+    },
+    {
+      "titulo": "Contratos activos por ciudad",
+      "descripcion": "Contratos vigentes filtrados por ubicación del cliente",
+      "sql": "SELECT c.nombre, co.estado FROM CONTRATOS co JOIN CLIENTES c ON co.cliente_id = c.cliente_id WHERE co.estado = 'Activo' AND c.ciudad = 'Lima';",
+      "resultadoEsperado": "2 contratos activos en Lima: Panadería El Trigo y Veterinaria Huellas"
+    },
+    {
+      "titulo": "Total de pagos por cliente",
+      "descripcion": "Suma de todos los pagos realizados por cada cliente",
+      "sql": "SELECT c.nombre, SUM(p.monto) AS total_pagado FROM PAGOS p JOIN FACTURAS f ON p.factura_id = f.factura_id JOIN CLIENTES c ON f.cliente_id = c.cliente_id GROUP BY c.nombre;",
+      "resultadoEsperado": "4 clientes con pagos totales entre $1,300 y $2,100"
+    },
+    {
+      "titulo": "Publicaciones por plataforma",
+      "descripcion": "Content publicado en redes sociales específicas",
+      "sql": "SELECT p.titulo, c.nombre FROM PUBLICACIONES p JOIN CAMPANAS c ON p.campana_id = c.campana_id JOIN REDES_SOCIALES r ON p.red_id = r.red_id WHERE r.nombre = 'Facebook';",
+      "resultadoEsperado": "2 publicaciones en Facebook: Promoción Pan Integral y Cuidado de Mascotas"
+    },
+    {
+      "titulo": "Servicios premium",
+      "descripcion": "Servicios con precio superior al promedio",
+      "sql": "SELECT nombre, precio FROM SERVICIOS WHERE precio > (SELECT AVG(precio) FROM SERVICIOS);",
+      "resultadoEsperado": "2 servicios premium: Google Ads ($1,200) y Facebook Ads ($1,000)"
+    },
+    {
+      "titulo": "Resumen de campañas por cliente",
+      "descripcion": "Contador de campañas ejecutadas por cada cliente",
+      "sql": "SELECT c.nombre, COUNT(*) AS total_campanas FROM CLIENTES c JOIN CAMPANAS ca ON c.cliente_id = ca.cliente_id GROUP BY c.nombre;",
+      "resultadoEsperado": "5 clientes con 1 campaña cada uno, total: 5 campañas"
+    }
+  ],
+  "casosUso": [
+    "Gestión integral de clientes con información de contacto y ubicación",
+    "Control completo de campañas publicitarias con fechas y métricas",
+    "Seguimiento de facturación y pagos para control financiero",
+    "Administración de contratos con estados y vigencias",
+    "Gestión de contenido en múltiples redes sociales",
+    "Análisis de métricas de rendimiento por campaña",
+    "Seguimiento de leads y conversiones",
+    "Control de herramientas digitales y sus costos"
+  ],
+  "ventajas": [
+    "Integridad referencial garantizada con Foreign Keys",
+    "Escalabilidad para agregar nuevos clientes y servicios",
+    "Flexibilidad para múltiples campañas por cliente",
+    "Análisis avanzado con consultas complejas",
+    "Trazabilidad completa de todas las operaciones",
+    "Optimización de consultas con índices apropiados",
+    "Estructura normalizada que evita redundancia de datos",
+    "Facilita reporting y business intelligence"
+  ]
+}

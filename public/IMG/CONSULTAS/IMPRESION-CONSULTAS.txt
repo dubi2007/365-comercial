@@ -1,0 +1,98 @@
+
+CLIENTE_ID NOMBRE                                                                                               CORREO                                                                                               TELEFONO             CIUDAD                                            
+---------- ---------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------- -------------------- --------------------------------------------------
+         1 Panadería El Trigo                                                                                   panaderia@gmail.com                                                                                  999111222            Lima                                              
+         2 Gimnasio FitLife                                                                                     contacto@fitlife.com                                                                                 988777555            Arequipa                                          
+         3 Veterinaria Huellas                                                                                  info@huellas.com                                                                                     987654321            Lima                                              
+         4 Café Aroma                                                                                           cafe@aroma.com                                                                                       945632100            Cusco                                             
+         5 Consultora Andes                                                                                     consultora@andes.com                                                                                 955222111            Trujillo                                          
+
+
+NOMBRE                                                                                               FECHA_IN
+---------------------------------------------------------------------------------------------------- --------
+Campaña Facebook Panadería                                                                           01/01/25
+Publicidad Instagram FitLife                                                                         10/02/25
+Campaña Huellas Google Ads                                                                           15/03/25
+Lanzamiento Café Aroma                                                                               01/04/25
+Campaña Consultora LinkedIn                                                                          01/05/25
+
+
+NOMBRE                                                                                              
+----------------------------------------------------------------------------------------------------
+María González
+
+
+FACTURA_ID      TOTAL
+---------- ----------
+         1       1300
+         2       1700
+         3       2100
+         4       1500
+         5       1800
+
+
+   LEAD_ID CAMPANA_ID NOMBRE                                                                                               CORREO                                                                                               ESTADO                                            
+---------- ---------- ---------------------------------------------------------------------------------------------------- ---------------------------------------------------------------------------------------------------- --------------------------------------------------
+         1          1 Roberto Silva                                                                                        roberto@email.com                                                                                    Pendiente                                         
+         4          4 Sofia Vega                                                                                           sofia@email.com                                                                                      Pendiente                                         
+
+
+NOMBRE                                                                                               ESTADO                                            
+---------------------------------------------------------------------------------------------------- --------------------------------------------------
+Panadería El Trigo                                                                                   Activo                                            
+Veterinaria Huellas                                                                                  Activo                                            
+
+
+NOMBRE                                                                                               TOTAL_PAGADO
+---------------------------------------------------------------------------------------------------- ------------
+Panadería El Trigo                                                                                           1300
+Gimnasio FitLife                                                                                             1700
+Veterinaria Huellas                                                                                          2100
+Café Aroma                                                                                                   1500
+
+
+TITULO                                                                                               NOMBRE                                                                                              
+---------------------------------------------------------------------------------------------------- ----------------------------------------------------------------------------------------------------
+Promoción Pan Integral                                                                               Campaña Facebook Panadería                                                                          
+Cuidado de Mascotas                                                                                  Campaña Huellas Google Ads                                                                          
+
+
+NOMBRE                                                                                                   PRECIO
+---------------------------------------------------------------------------------------------------- ----------
+Google Ads                                                                                                 1200
+SEO                                                                                                         900
+Facebook Ads                                                                                               1000
+
+
+NOMBRE                                                                                               TOTAL_CAMPANAS
+---------------------------------------------------------------------------------------------------- --------------
+Panadería El Trigo                                                                                                1
+Gimnasio FitLife                                                                                                  1
+Veterinaria Huellas                                                                                               1
+Café Aroma                                                                                                        1
+Consultora Andes                                                                                                  1
+
+
+TABLA                   REGISTROS
+---------------------- ----------
+CLIENTES                        5
+CAMPANAS                        5
+EMPLEADOS                       5
+SERVICIOS                       5
+PROVEEDORES                     5
+FACTURAS                        5
+DETALLE_FACTURA                 5
+PAGOS                           5
+CONTRATOS                       5
+REDES_SOCIALES                  5
+PUBLICACIONES                   5
+
+TABLA                   REGISTROS
+---------------------- ----------
+METRICAS_CAMPANA                5
+LEADS                           5
+HERRAMIENTAS_DIGITALES          5
+
+14 filas seleccionadas. 
+
+Confirmación terminada.
