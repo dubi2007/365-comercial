@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { ChevronLeftIcon, ChevronRightIcon, CircleStackIcon, TableCellsIcon, ClipboardDocumentListIcon, ChartBarIcon, CogIcon, StarIcon } from '@heroicons/react/24/outline'
+import { ChevronLeftIcon, ChevronRightIcon, CircleStackIcon, TableCellsIcon, ClipboardDocumentListIcon, ChartBarIcon, StarIcon } from '@heroicons/react/24/outline'
 
 interface Tabla {
   nombre: string;
@@ -32,7 +32,7 @@ interface DatosCreativa360 {
     totalConsultas: number;
   };
   tablas: Tabla[];
-  datosEjemplo: any;
+  datosEjemplo: Record<string, unknown>;
   consultas: Array<{
     titulo: string;
     descripcion: string;
@@ -772,7 +772,7 @@ function InsercionesDatos({ datos }: { datos: DatosCreativa360 }) {
 }
 
 // Componente Código de Tablas SQL
-function CodigoTablas({ datos }: { datos: DatosCreativa360 }) {
+function CodigoTablas({ datos: _ }: { datos: DatosCreativa360 }) {
   const [imagenSeleccionada, setImagenSeleccionada] = useState(0)
   
   const imagenesCodigoSQL = [
